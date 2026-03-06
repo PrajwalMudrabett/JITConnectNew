@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JITConnect - Messages</title>
+    <link rel="stylesheet" href="premium-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <div class="background-wrapper">
+        <div class="overlay"></div>
+    </div>
+
+    <div class="dashboard-container">
+        <aside class="sidebar glass-effect">
+            <h1 class="sidebar-logo">JITConnect</h1>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="dashboard.html" class="nav-link"><span>🏠</span> Home</a></li>
+                    <li class="nav-item"><a href="explore.html" class="nav-link"><span>🔍</span> Explore</a></li>
+                    <li class="nav-item"><a href="messages.html" class="nav-link active"><span>💬</span> Messages</a></li>
+                    <li class="nav-item"><a href="profile.html" class="nav-link"><span>👤</span> My Profile</a></li>
+                    <li class="nav-item"><a href="connections.html" class="nav-link"><span>🤝</span> Connections</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="toggleTheme()"><span class="theme-icon-nav">🌙</span> Theme</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="logout()"><span>🚪</span> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="feed" style="grid-column: span 2;">
+            <div class="glass-effect" style="padding: 24px; border-radius: 16px; min-height: 600px; display: grid; grid-template-columns: 300px 1fr;">
+                <div style="border-right: 1px solid rgba(0,0,0,0.1); padding-right: 16px;">
+                    <h3 style="margin-bottom: 16px;">Conversations</h3>
+                    <div id="conversationsList"></div>
+                </div>
+                <div style="padding-left: 24px; display: flex; flex-direction: column;">
+                    <div id="chatHeader" style="padding-bottom: 16px; border-bottom: 1px solid rgba(0,0,0,0.1); margin-bottom: 16px;">
+                        <h3>Select a conversation</h3>
+                    </div>
+                    <div id="messagesContainer" style="flex: 1; overflow-y: auto; margin-bottom: 16px;"></div>
+                    <div style="display: flex; gap: 12px;">
+                        <input type="text" id="messageInput" placeholder="Type a message..." 
+                               style="flex: 1; padding: 12px 16px; border: 2px solid rgba(0,0,0,0.1); border-radius: 24px; font-size: 14px;">
+                        <button class="btn-primary" style="width: auto; padding: 12px 24px; margin: 0; border-radius: 24px;" onclick="sendMessage()">
+                            Send
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="messages-script.js"></script>
+</body>
+</html>

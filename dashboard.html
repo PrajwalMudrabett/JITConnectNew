@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JITConnect - Home</title>
+    <link rel="stylesheet" href="premium-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <div class="background-wrapper">
+        <div class="overlay"></div>
+    </div>
+
+    <div class="dashboard-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar glass-effect">
+            <h1 class="sidebar-logo">JITConnect</h1>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link active">
+                            <span>🏠</span> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="explore.html" class="nav-link">
+                            <span>🔍</span> Explore
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="messages.html" class="nav-link">
+                            <span>💬</span> Messages
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="profile.html" class="nav-link">
+                            <span>👤</span> My Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="connections.html" class="nav-link">
+                            <span>🤝</span> Connections
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="toggleTheme()">
+                            <span class="theme-icon-nav">🌙</span> Theme
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="logout()">
+                            <span>🚪</span> Logout
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Feed -->
+        <main class="feed">
+            <!-- Create Post -->
+            <div class="create-post-card glass-effect">
+                <h3>What's on your mind?</h3>
+                <textarea class="create-post-textarea" id="postContent" placeholder="Share your achievements, thoughts, or updates..."></textarea>
+                <div class="post-actions">
+                    <input type="file" id="postImage" accept="image/*" style="display: none;">
+                    <button class="btn-secondary" onclick="document.getElementById('postImage').click()">
+                        📷 Photo
+                    </button>
+                    <select id="postCategory" class="btn-secondary" style="padding: 10px 20px;">
+                        <option value="general">General</option>
+                        <option value="internship">Internship</option>
+                        <option value="placement">Placement</option>
+                        <option value="research">Research</option>
+                        <option value="event">Event</option>
+                    </select>
+                    <button class="btn-primary" style="width: auto; padding: 10px 30px; margin: 0;" onclick="createPost()">
+                        Post
+                    </button>
+                </div>
+            </div>
+
+            <!-- Posts Feed -->
+            <div id="postsContainer"></div>
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="right-panel">
+            <!-- Suggested Connections -->
+            <div class="panel-card glass-effect">
+                <h3>Suggested Connections</h3>
+                <div id="suggestionsContainer"></div>
+            </div>
+
+            <!-- Trending Posts -->
+            <div class="panel-card glass-effect">
+                <h3>Trending Topics</h3>
+                <div class="trending-topics">
+                    <div class="trending-item">#Placements2024</div>
+                    <div class="trending-item">#TechFest</div>
+                    <div class="trending-item">#Research</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="dashboard-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JITConnect - Login</title>
+    <link rel="stylesheet" href="premium-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+    <div class="background-wrapper">
+        <div class="overlay"></div>
+    </div>
+
+    <div class="login-container">
+        <div class="login-card glass-effect">
+            <div class="logo-section">
+                <h1 class="logo-text">JITConnect</h1>
+                <p class="tagline">Connect. Share. Grow.</p>
+                <p class="subtitle">Jyothy Institute of Technology</p>
+            </div>
+            
+            <div id="loginForm" class="form-section">
+                <h2 class="form-title">Welcome Back</h2>
+                <form onsubmit="handleLogin(event)">
+                    <div class="input-group">
+                        <input type="email" id="loginEmail" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+                <p class="switch-text">Don't have an account? <a href="#" onclick="showRegister()">Sign Up</a></p>
+            </div>
+
+            <div id="registerForm" class="form-section hidden">
+                <h2 class="form-title">Create Account</h2>
+                <form onsubmit="handleRegister(event)">
+                    <div class="input-group">
+                        <input type="text" id="regName" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="regEmail" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="regPassword" placeholder="Password" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <select id="regRole" required onchange="handleRoleChange()">
+                            <option value="">Select Role</option>
+                            <option value="student">Student</option>
+                            <option value="faculty">Faculty</option>
+                            <option value="alumni">Alumni</option>
+                            <option value="department">Department</option>
+                        </select>
+                    </div>
+
+                    <div id="studentFields" class="role-fields hidden">
+                        <div class="input-group">
+                            <input type="text" id="usn" placeholder="USN">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="branch" placeholder="Branch">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="year" placeholder="Year">
+                        </div>
+                    </div>
+
+                    <div id="facultyFields" class="role-fields hidden">
+                        <div class="input-group">
+                            <input type="text" id="department" placeholder="Department">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="designation" placeholder="Designation">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="experience" placeholder="Years of Experience">
+                        </div>
+                    </div>
+
+                    <div id="alumniFields" class="role-fields hidden">
+                        <div class="input-group">
+                            <input type="text" id="batch" placeholder="Batch Year">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="alumniBranch" placeholder="Branch">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="company" placeholder="Current Company">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" id="alumniDesignation" placeholder="Designation">
+                        </div>
+                    </div>
+
+                    <div id="departmentFields" class="role-fields hidden">
+                        <div class="input-group">
+                            <input type="text" id="deptName" placeholder="Department Name">
+                        </div>
+                        <div class="input-group">
+                            <textarea id="deptDescription" placeholder="Description" rows="3"></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Create Account</button>
+                </form>
+                <p class="switch-text">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+            </div>
+        </div>
+
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <span class="theme-icon">🌙</span>
+        </button>
+    </div>
+
+    <script src="login-script.js"></script>
+</body>
+</html>
