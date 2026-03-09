@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JITConnect - Login</title>
-    <link rel="stylesheet" href="premium-styles.css">
+    <link rel="stylesheet" href="ferrari-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="light-mode">
+<body class="dark-mode">
     <div class="background-wrapper">
         <div class="overlay"></div>
     </div>
 
     <div class="login-container">
-        <div class="login-card glass-effect">
+        <div class="login-card">
             <div class="logo-section">
-                <h1 class="logo-text">JITConnect</h1>
-                <p class="tagline">Connect. Share. Grow.</p>
+                <h1 class="logo-text">JITCONNECT</h1>
+                <p class="tagline">CONNECT • SHARE • GROW</p>
                 <p class="subtitle">Jyothy Institute of Technology</p>
             </div>
             
             <div id="loginForm" class="form-section">
-                <h2 class="form-title">Welcome Back</h2>
+                <h2 class="form-title">WELCOME BACK</h2>
                 <form onsubmit="handleLogin(event)">
                     <div class="input-group">
                         <input type="email" id="loginEmail" placeholder="Email Address" required>
@@ -31,13 +31,13 @@
                     <div class="input-group">
                         <input type="password" id="loginPassword" placeholder="Password" required>
                     </div>
-                    <button type="submit" class="btn-primary">Login</button>
+                    <button type="submit" class="btn-primary">LOGIN</button>
                 </form>
-                <p class="switch-text">Don't have an account? <a href="#" onclick="showRegister()">Sign Up</a></p>
+                <p class="switch-text">Don't have an account? <a href="#" onclick="showRegister()">SIGN UP</a></p>
             </div>
 
             <div id="registerForm" class="form-section hidden">
-                <h2 class="form-title">Create Account</h2>
+                <h2 class="form-title">CREATE ACCOUNT</h2>
                 <form onsubmit="handleRegister(event)">
                     <div class="input-group">
                         <input type="text" id="regName" placeholder="Full Name" required>
@@ -107,9 +107,9 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="btn-primary">Create Account</button>
+                    <button type="submit" class="btn-primary">CREATE ACCOUNT</button>
                 </form>
-                <p class="switch-text">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+                <p class="switch-text">Already have an account? <a href="#" onclick="showLogin()">LOGIN</a></p>
             </div>
         </div>
 

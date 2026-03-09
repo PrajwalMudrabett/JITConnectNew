@@ -4,53 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JITConnect - Home</title>
-    <link rel="stylesheet" href="premium-styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ferrari-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="light-mode">
+<body>
     <div class="background-wrapper">
         <div class="overlay"></div>
     </div>
 
     <div class="dashboard-container">
         <!-- Left Sidebar -->
-        <aside class="sidebar glass-effect">
-            <h1 class="sidebar-logo">JITConnect</h1>
+        <aside class="sidebar">
+            <h1 class="sidebar-logo">JITCONNECT</h1>
             <nav>
                 <ul class="nav-menu">
                     <li class="nav-item">
                         <a href="dashboard.html" class="nav-link active">
-                            <span>🏠</span> Home
+                            <span>🏠</span> HOME
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="explore.html" class="nav-link">
-                            <span>🔍</span> Explore
+                            <span>🔍</span> EXPLORE
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="messages.html" class="nav-link">
-                            <span>💬</span> Messages
+                            <span>💬</span> MESSAGES
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="profile.html" class="nav-link">
-                            <span>👤</span> My Profile
+                            <span>👤</span> PROFILE
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="connections.html" class="nav-link">
-                            <span>🤝</span> Connections
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" onclick="toggleTheme()">
-                            <span class="theme-icon-nav">🌙</span> Theme
+                            <span>🤝</span> CONNECTIONS
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" onclick="logout()">
-                            <span>🚪</span> Logout
+                            <span>🚪</span> LOGOUT
                         </a>
                     </li>
                 </ul>
@@ -60,8 +55,8 @@
         <!-- Main Feed -->
         <main class="feed">
             <!-- Create Post -->
-            <div class="create-post-card glass-effect">
-                <h3>What's on your mind?</h3>
+            <div class="create-post-card">
+                <h3>SHARE YOUR ACHIEVEMENT</h3>
                 <textarea class="create-post-textarea" id="postContent" placeholder="Share your achievements, thoughts, or updates..."></textarea>
                 <div class="post-actions">
                     <input type="file" id="postImage" accept="image/*" style="display: none;">
@@ -75,8 +70,8 @@
                         <option value="research">Research</option>
                         <option value="event">Event</option>
                     </select>
-                    <button class="btn-primary" style="width: auto; padding: 10px 30px; margin: 0;" onclick="createPost()">
-                        Post
+                    <button class="btn-primary" style="width: auto; padding: 12px 40px; margin: 0;" onclick="createPost()">
+                        POST
                     </button>
                 </div>
             </div>
@@ -88,14 +83,14 @@
         <!-- Right Panel -->
         <aside class="right-panel">
             <!-- Suggested Connections -->
-            <div class="panel-card glass-effect">
-                <h3>Suggested Connections</h3>
+            <div class="panel-card">
+                <h3>SUGGESTED CONNECTIONS</h3>
                 <div id="suggestionsContainer"></div>
             </div>
 
             <!-- Trending Posts -->
-            <div class="panel-card glass-effect">
-                <h3>Trending Topics</h3>
+            <div class="panel-card">
+                <h3>TRENDING TOPICS</h3>
                 <div class="trending-topics">
                     <div class="trending-item">#Placements2024</div>
                     <div class="trending-item">#TechFest</div>
