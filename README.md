@@ -1,147 +1,225 @@
-# JITConnect - React Version
+# 🎓 JITConnect - College Social Network
 
-A premium social networking platform exclusively for Jyothy Institute of Technology members, built with React and featuring Ferrari-inspired design.
+A LinkedIn-style social networking platform for Jyothy Institute of Technology, connecting students, faculty, alumni, and departments.
 
-## 🚀 Quick Start
+## 🚀 Live Demo
 
-```bash
-cd jitconnect-react
-npm install
-npm run dev
-```
-
-Open your browser to the URL shown (usually http://localhost:5173)
+- **Frontend**: Deploy on Vercel
+- **Backend**: https://jitconnectnew.onrender.com
+- **Database**: MongoDB Atlas
 
 ## ✨ Features
 
-- Role-based authentication (Student/Faculty/Alumni/Department)
-- Post creation with categories (Internship, Placement, Research, Event, General)
-- Real-time feed with JIT-specific content
-- Connection management
-- Messaging system
-- User profiles
-- Search and explore
-- JIT campus backgrounds on every page
-- Ferrari-inspired premium UI
+### For Students
+- Create and share posts
+- View and apply to job openings
+- Connect with alumni and faculty
+- Access research opportunities
+- View college events
 
-## 🎨 Design
+### For Faculty
+- Post research opportunities
+- Share academic content
+- Connect with students
+- Manage department activities
 
-- Light theme with clear JIT campus backgrounds
-- Ferrari red (#DC0000) accents
-- Montserrat font family
-- Premium shadows and animations
-- Glassmorphism effects on cards
+### For Alumni
+- Post job openings
+- Share career opportunities
+- Mentor students
+- Stay connected with college
 
-## 🏗️ Tech Stack
+### For Departments
+- Post events and announcements
+- Manage department activities
+- Connect with other departments
 
+### For Admins
+- Content moderation
+- Approve/restrict posts, jobs, research
+- User management
+- Platform oversight
+
+## 🛠️ Tech Stack
+
+### Frontend
 - React 19
-- React Router DOM 7
+- React Router DOM
 - Vite
-- CSS3 (Ferrari-inspired custom styles)
-- LocalStorage for data persistence
+- CSS3
 
-## 📁 Project Structure
+### Backend
+- Node.js
+- Express.js
+- MongoDB with Mongoose
+- JWT Authentication
+- bcrypt for password hashing
+
+## 📦 Project Structure
 
 ```
-jitconnect-react/
-├── public/
-│   └── assets/
-│       └── jit-images/          # JIT campus images and logos
-├── src/
-│   ├── components/
-│   │   └── Sidebar.jsx          # Navigation sidebar
-│   ├── pages/
-│   │   ├── Login.jsx            # Authentication
-│   │   ├── Dashboard.jsx        # Main feed
-│   │   ├── Profile.jsx          # User profile
-│   │   ├── Explore.jsx          # Discover people
-│   │   ├── Connections.jsx      # Connections list
-│   │   └── Messages.jsx         # Messaging
-│   ├── ferrari-styles.css       # Main styles
-│   ├── achievements-banner.css  # Banner styles
-│   ├── App.jsx                  # Main app component
-│   └── main.jsx                 # Entry point
-└── package.json
+JITConnect/
+├── src/                    # React source files
+│   ├── components/         # Reusable components
+│   ├── pages/             # Page components
+│   └── services/          # API services
+├── public/                # Static assets
+├── server/                # Backend server
+│   ├── config/           # Database config
+│   ├── middleware/       # Auth middleware
+│   ├── models/           # MongoDB models
+│   ├── routes/           # API routes
+│   └── utils/            # Utility functions
+├── index.html            # Entry HTML
+├── package.json          # Frontend dependencies
+└── vite.config.js        # Vite configuration
 ```
 
-## 🎯 Key Features
+## 🚀 Quick Start
 
-### Authentication
-- Dynamic form fields based on role selection
-- Student: USN, Branch, Year
-- Faculty: Department, Designation, Experience
-- Alumni: Batch, Branch, Company, Designation
-- Department: Department Name, Description
+### Prerequisites
+- Node.js 18+ installed
+- MongoDB Atlas account
+- Git installed
 
-### Dashboard
-- Create posts with text and images
-- Category selection for posts
-- JIT achievements banner with NIRF ranking and NBA accreditation
-- Suggested connections panel
-- Trending topics
+### 1. Clone Repository
+```bash
+git clone https://github.com/PrajwalMudrabett/JITConnectNew.git
+cd JITConnectNew
+```
 
-### Profile
-- View user information
-- Display user's posts
-- Edit profile option
+### 2. Install Frontend Dependencies
+```bash
+npm install
+```
 
-### Explore
-- Search functionality
-- Filter by name, role, or branch
-- Connect with users
+### 3. Install Backend Dependencies
+```bash
+cd server
+npm install
+cd ..
+```
 
-### Messages
-- Conversation list
-- Chat interface
-- Send messages
+### 4. Configure Environment Variables
 
-### Connections
-- View all connections
-- Message connections directly
+**Frontend (.env)**:
+```env
+VITE_API_URL=https://jitconnectnew.onrender.com/api
+```
 
-## 🖼️ Campus Backgrounds
+**Backend (server/.env)**:
+```env
+PORT=5000
+NODE_ENV=production
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+ALLOWED_EMAIL_DOMAINS=@jyothyit.ac.in,@jit.ac.in
+CLIENT_URL=http://localhost:5173
+```
 
-Different JIT campus images for each page:
-- Login: Main campus view
-- Dashboard: Campus view 2
-- Profile: Campus view 3
-- Explore: Campus view 4
-- Messages: Sringeri view
-- Connections: Main campus view
+### 5. Run Development Servers
+
+**Frontend**:
+```bash
+npm run dev
+```
+
+**Backend** (in another terminal):
+```bash
+cd server
+npm start
+```
+
+Visit: http://localhost:5173
+
+## 🌐 Deployment
+
+### Deploy Frontend to Vercel
+
+1. Push code to GitHub
+2. Go to https://vercel.com/new
+3. Import your repository
+4. Add environment variable:
+   - `VITE_API_URL` = `https://jitconnectnew.onrender.com/api`
+5. Deploy!
+
+**Note**: No need to set Root Directory - frontend is now in root!
+
+### Backend (Already Deployed)
+- Platform: Render.com
+- URL: https://jitconnectnew.onrender.com
+
+## 🔐 Security Features
+
+- Email validation (college domains only)
+- Strong password requirements
+- JWT authentication
+- Password hashing with bcrypt
+- Input sanitization
+- CORS protection
+- Security headers
+- Role-based access control
+
+## 👥 User Roles
+
+- **Student**: Access jobs, research, events
+- **Faculty**: Post research, manage content
+- **Alumni**: Post jobs, mentor students
+- **Department**: Manage events, announcements
+- **Admin**: Full platform control
+
+## 📧 Admin Access
+
+- Email: admin@jyothyit.ac.in
+- Password: Admin@12345
 
 ## 📚 Documentation
 
-- [MRD.md](MRD.md) - Market Requirements Document
-- [Design.md](Design.md) - Design & UX Strategy
-- [TechStack.md](TechStack.md) - Technical Stack Details
-- [README-FRONTEND.md](README-FRONTEND.md) - Original Frontend Documentation
+- `DEPLOY-NOW.md` - Quick deployment guide
+- `VERCEL-DEPLOYMENT.md` - Detailed Vercel guide
+- `BACKEND-INTEGRATION.md` - Backend integration
+- `SECURITY-IMPROVEMENTS.md` - Security features
 
-## 🎓 For Your Resume
+## 🐛 Troubleshooting
 
-This project demonstrates:
-- Full-stack development skills
-- Modern React development
-- UI/UX design thinking
-- State management
-- Routing and navigation
-- Responsive design
-- Clean code architecture
+### Build Fails
+```bash
+rm -rf node_modules package-lock.json
+npm install
+npm run build
+```
 
-## 🔮 Future Enhancements
+### API Connection Issues
+- Check backend is running
+- Verify VITE_API_URL is correct
+- Check CORS settings on backend
 
-- Backend integration with Node.js/Express
-- MongoDB database
-- Real-time messaging with Socket.io
-- Image upload functionality
-- Notifications system
-- Advanced search filters
-- Profile completion indicator
-- Achievement badges
+### Database Connection
+- Verify MongoDB Atlas connection string
+- Check network access (whitelist 0.0.0.0/0)
 
-## 📝 License
+## 🤝 Contributing
 
-Built for Jyothy Institute of Technology
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## 📄 License
+
+This project is for educational purposes.
+
+## 👨‍💻 Author
+
+Prajwal Mudrabett
+
+## 🔗 Links
+
+- **GitHub**: https://github.com/PrajwalMudrabett/JITConnectNew
+- **Backend**: https://jitconnectnew.onrender.com
+- **College**: Jyothy Institute of Technology
 
 ---
 
-**Built with ❤️ for JIT Community**
+Made with ❤️ for JIT Community
