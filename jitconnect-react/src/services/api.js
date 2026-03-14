@@ -1,11 +1,33 @@
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://jitconnectnew.onrender.com/api';
+
+// Helper function for API calls with error handling
+const apiCall = async (url, options = {}) => {
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.message || `HTTP error! status: ${response.status}`);
+    }
+    
+    return data;
+  } catch (error) {
+    console.error('API Error:', error);
+    throw error;
+  }
+};
 
 // Get token from localStorage
 const getToken = () => {
   const userData = localStorage.getItem('userData');
   if (userData) {
-    const parsed = JSON.parse(userData);
-    return parsed.token;
+    try {
+      const parsed = JSON.parse(userData);
+      return parsed.token;
+    } catch (error) {
+      console.error('Error parsing user data:', error);
+      return null;
+    }
   }
   return null;
 };

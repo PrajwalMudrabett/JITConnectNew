@@ -27,7 +27,10 @@ function Login({ setIsAuthenticated }) {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    // Sanitize input by trimming whitespace
+    const sanitizedValue = typeof value === 'string' ? value.trim() : value;
+    setFormData({ ...formData, [name]: sanitizedValue });
     setError('');
   };
 
@@ -36,9 +39,16 @@ function Login({ setIsAuthenticated }) {
     setLoading(true);
     setError('');
 
+    // Validate inputs
+    if (!formData.email || !formData.password) {
+      setError('Please fill in all fields');
+      setLoading(false);
+      return;
+    }
+
     try {
       const data = await authAPI.login({
-        email: formData.email,
+        email: formData.email.trim().toLowerCase(),
         password: formData.password
       });
 
@@ -52,7 +62,7 @@ function Login({ setIsAuthenticated }) {
       setIsAuthenticated(true);
       navigate('/dashboard');
     } catch (err) {
-      setError('Login failed. Please try again.');
+      setError(err.response?.data?.message || 'Login failed. Please try again.');
       setLoading(false);
     }
   };
@@ -62,9 +72,20 @@ function Login({ setIsAuthenticated }) {
     setLoading(true);
     setError('');
 
+    // Validate required fields
+    if (!formData.name || !formData.email || !formData.password || !formData.role) {
+      setError('Please fill in all required fields');
+      setLoading(false);
+      return;
+    }
+
+    // Sanitize inputs
+    const sanitizedEmail = formData.email.trim().toLowerCase();
+    const sanitizedName = formData.name.trim();
+
     // Validate college email
     const validDomains = ['@jyothyit.ac.in', '@jit.ac.in'];
-    const isValidEmail = validDomains.some(domain => formData.email.toLowerCase().endsWith(domain));
+    const isValidEmail = validDomains.some(domain => sanitizedEmail.endsWith(domain));
     
     if (!isValidEmail) {
       setError('Please use your college email address (@jyothyit.ac.in or @jit.ac.in)');
@@ -79,8 +100,38 @@ function Login({ setIsAuthenticated }) {
       return;
     }
 
+    if (!/[A-Z]/.test(formData.password)) {
+      setError('Password must contain at least one uppercase letter');
+      setLoading(false);
+      return;
+    }
+
+    if (!/[a-z]/.test(formData.password)) {
+      setError('Password must contain at least one lowercase letter');
+      setLoading(false);
+      return;
+    }
+
+    if (!/[0-9]/.test(formData.password)) {
+      setError('Password must contain at least one number');
+      setLoading(false);
+      return;
+    }
+
+    if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(formData.password)) {
+      setError('Password must contain at least one special character');
+      setLoading(false);
+      return;
+    }
+
     try {
-      const data = await authAPI.register(formData);
+      const sanitizedData = {
+        ...formData,
+        name: sanitizedName,
+        email: sanitizedEmail
+      };
+
+      const data = await authAPI.register(sanitizedData);
 
       if (data.message && data.message.includes('exists')) {
         setError(data.message);
@@ -92,7 +143,7 @@ function Login({ setIsAuthenticated }) {
       setIsAuthenticated(true);
       navigate('/dashboard');
     } catch (err) {
-      setError('Registration failed. Please try again.');
+      setError(err.response?.data?.message || 'Registration failed. Please try again.');
       setLoading(false);
     }
   };

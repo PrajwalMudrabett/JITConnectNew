@@ -12,8 +12,23 @@ router.post('/register', async (req, res) => {
   try {
     const { name, email, password, role, ...otherFields } = req.body;
 
+    // Input validation
+    if (!name || !email || !password || !role) {
+      return res.status(400).json({ message: 'Please provide all required fields' });
+    }
+
+    // Sanitize inputs
+    const sanitizedName = name.trim();
+    const sanitizedEmail = email.trim().toLowerCase();
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(sanitizedEmail)) {
+      return res.status(400).json({ message: 'Invalid email format' });
+    }
+
     // Check if user exists
-    const userExists = await User.findOne({ email });
+    const userExists = await User.findOne({ email: sanitizedEmail });
     if (userExists) {
       return res.status(400).json({ message: 'User already exists' });
     }
@@ -35,10 +50,16 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ message: 'Password must contain at least one special character' });
     }
 
+    // Validate role
+    const validRoles = ['student', 'faculty', 'alumni', 'department'];
+    if (!validRoles.includes(role)) {
+      return res.status(400).json({ message: 'Invalid role' });
+    }
+
     // Create user
     const user = await User.create({
-      name,
-      email,
+      name: sanitizedName,
+      email: sanitizedEmail,
       password,
       role,
       ...otherFields
@@ -55,6 +76,7 @@ router.post('/register', async (req, res) => {
       });
     }
   } catch (error) {
+    console.error('Registration error:', error);
     res.status(400).json({ message: error.message });
   }
 });
@@ -66,8 +88,16 @@ router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    // Input validation
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Please provide email and password' });
+    }
+
+    // Sanitize email
+    const sanitizedEmail = email.trim().toLowerCase();
+
     // Check for user
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: sanitizedEmail });
 
     if (user && (await user.matchPassword(password))) {
       res.json({
@@ -85,7 +115,8 @@ router.post('/login', async (req, res) => {
       res.status(401).json({ message: 'Invalid email or password' });
     }
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.error('Login error:', error);
+    res.status(400).json({ message: 'Login failed' });
   }
 });
 

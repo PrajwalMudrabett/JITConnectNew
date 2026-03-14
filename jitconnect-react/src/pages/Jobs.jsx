@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import { jobsAPI, announcementsAPI, researchAPI } from '../services/api';
+import './jobs-page.css';
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
@@ -177,6 +178,19 @@ function Jobs() {
       case 'on-site': return '🏢';
       default: return '📍';
     }
+  };
+
+  const getTimeAgo = (date) => {
+    const now = new Date();
+    const posted = new Date(date);
+    const diffInMs = now - posted;
+    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+    
+    if (diffInDays === 0) return 'Today';
+    if (diffInDays === 1) return 'Yesterday';
+    if (diffInDays < 7) return `${diffInDays} days ago`;
+    if (diffInDays < 30) return `${Math.floor(diffInDays / 7)} weeks ago`;
+    return `${Math.floor(diffInDays / 30)} months ago`;
   };
 
   return (
@@ -533,11 +547,14 @@ function Jobs() {
                         display: 'flex', 
                         justifyContent: 'space-between', 
                         alignItems: 'center',
-                        marginTop: '12px'
+                        marginTop: '12px',
+                        paddingTop: '12px',
+                        borderTop: '1px solid rgba(0,0,0,0.08)'
                       }}>
                         <div style={{ fontSize: '12px', color: 'rgba(0, 0, 0, 0.6)', fontWeight: '400' }}>
                           Posted by {job.postedBy?.name}
                           {job.postedBy?.company && ` • ${job.postedBy.company}`}
+                          {job.createdAt && ` • ${getTimeAgo(job.createdAt)}`}
                         </div>
                         {userData.role === 'student' && (
                           <button
